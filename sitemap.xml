@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chenkc.github.io/test/table-test/</loc>
+    
+    <lastmod>2016-11-01T02:48:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chenkc.github.io/test/sd-storage-partitions/</loc>
+    
+    <lastmod>2016-11-01T01:16:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chenkc.github.io/hexo-how-to/</loc>
     
-    <lastmod>2016-06-22T03:13:03.000Z</lastmod>
+    <lastmod>2016-06-22T03:26:43.000Z</lastmod>
     
   </url>
   
