@@ -1,11 +1,16 @@
 <!doctype html>
-<html class="theme-next use-motion ">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -18,23 +23,54 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
 
 
 
   
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
-<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
-
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
 
 
 
@@ -42,7 +78,12 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
 
 
 <meta name="description">
@@ -56,29 +97,32 @@
 <meta name="twitter:description">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: '',
-    sidebar: 'post'
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
   };
 </script>
 
 
 
+
+  <link rel="canonical" href="http://chenkc.github.io/"/>
+
+
   <title> chenkc </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-tw">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -86,12 +130,21 @@
 
 
 
-  <div class="container one-column 
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
    page-home 
-">
+ ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
@@ -117,13 +170,13 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首頁
           </a>
@@ -133,7 +186,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             歸檔
           </a>
@@ -143,18 +196,50 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             標籤
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            Schedule
+          </a>
+        </li>
+      
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
       
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -163,7 +248,9 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
     
       
@@ -171,7 +258,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -182,6 +273,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -192,7 +284,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
             <time itemprop="dateCreated" datetime="2016-04-21T15:14:22+08:00" content="2016-04-21">
               2016-04-21
             </time>
@@ -206,21 +301,24 @@
 
           
 
+          
+          
+
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+          
+            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -230,9 +328,16 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -255,7 +360,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -266,6 +375,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/hexo-how-to/" itemprop="url">
                   Hexo-how-to
                 </a>
@@ -276,7 +386,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
             <time itemprop="dateCreated" datetime="2016-04-15T16:53:32+08:00" content="2016-04-15">
               2016-04-15
             </time>
@@ -284,7 +397,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/how-to/" itemprop="url" rel="index">
@@ -305,21 +422,24 @@
 
           
 
+          
+          
+
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Target: Using Hexo to create Embux FAQ &amp; Documentation website.</p>
+          
+            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Target: Using Hexo to create Embux FAQ &amp; Documentation website.</p>
 <p>Note: Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other languages) and Hexo generates static files with a beautiful theme in seconds.</p>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Quick Guideline</p>
 <ul>
@@ -365,9 +485,16 @@
 <p><code>rss: /atom.xml</code></p>
 <h3 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h3><p><code>npm install hexo-generator-sitmap --save</code></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -390,7 +517,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -401,6 +532,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/android-usb-tethering/" itemprop="url">
                   Android USB Tethering
                 </a>
@@ -411,7 +543,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
             <time itemprop="dateCreated" datetime="2016-03-22T16:56:30+08:00" content="2016-03-22">
               2016-03-22
             </time>
@@ -419,7 +554,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/android/" itemprop="url" rel="index">
@@ -440,21 +579,24 @@
 
           
 
+          
+          
+
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>refer: <a href="https://wiki.gentoo.org/wiki/Android_USB_Tethering" target="_blank" rel="external">Original link</a></p>
+          
+            <p>refer: <a href="https://wiki.gentoo.org/wiki/Android_USB_Tethering" target="_blank" rel="external">Original link</a></p>
 <p>Tethering means sharing the Internet connection of an Internet-capable mobile phone with other devices. This sharing can be offered over a wireless LAN (Wi-Fi), or over Bluetooth, or by physical connection using a cable (Tethering).</p>
 <p>Our focus in this article will be the USB tethering.<br>Your Android mobile phone can behave as an external network interface usbN, connected via the USB infrastructure. The usbN interface is in turn connected to the mobile phone LAN, providing dhcp server, DNS server, gateway and so on.<br>That’s how your mobile phone can provide an Internet connection to another device.</p>
 <p>Android phones are already equipped to provide this functionality. Simply connect the USB cable and go to Settings -&gt; Wireless settings -&gt; Tethering -&gt; Tethering USB.</p>
@@ -492,9 +634,16 @@
 <p><code>root #dhcpcd -U usb0</code></p>
 <p>Then you can set what you want in the postup hook.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -517,7 +666,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -528,6 +681,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/introduction-to-cross-compiling/" itemprop="url">
                   Introduction to cross-compiling
                 </a>
@@ -538,7 +692,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
             <time itemprop="dateCreated" datetime="2016-03-02T12:48:41+08:00" content="2016-03-02">
               2016-03-02
             </time>
@@ -546,7 +703,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/linux/" itemprop="url" rel="index">
@@ -567,21 +728,24 @@
 
           
 
+          
+          
+
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>refer: <a href="http://landley.net/writing/docs/cross-compiling.html" target="_blank" rel="external">Original link</a></p>
+          
+            <p>refer: <a href="http://landley.net/writing/docs/cross-compiling.html" target="_blank" rel="external">Original link</a></p>
 <p>ref: <a href="http://landley.net/writing/docs/cross-compiling.html" target="_blank" rel="external">http://landley.net/writing/docs/cross-compiling.html</a></p>
 <h2 id="Host-vs-Target"><a href="#Host-vs-Target" class="headerlink" title="Host vs Target"></a>Host vs Target</h2><p>A compiler is a program that turns source code into executable code. Like all programs, a compiler runs on a specific type of computer, and the new programs it outputs also run on a specific type of computer.[^1]</p>
 <p>The computer the compiler runs on is called the host, and the computer the new programs run on is called the target. When the host and target are the same type of machine, the compiler is a native compiler. When the host and target are different, the compiler is a cross compiler.[^2]</p>
@@ -631,9 +795,16 @@
 <p>[^3]: Modern desktop systems are sufficiently fast that emulating a target and natively compiling under the emulator is actually a viable strategy. It’s significantly slower than cross compiling, requires finding or generating a native build environment for the target (often meaning you have to set up a cross-compiler anyway), and can be tripped up by differences between the emulator and the real hardware to deploy on. But it’s an option.</p>
 <p>[^4]: This is why cross-compile toolchains tend to prefix the names of their utilities, ala “armv5l-linux-gcc”. If that was simply called “gcc” then the host and native compiler couldn’t be in the $PATH at the same time.</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -656,7 +827,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -667,6 +842,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/first-post/" itemprop="url">
                   The-first-post
                 </a>
@@ -677,7 +853,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
             <time itemprop="dateCreated" datetime="2015-12-25T12:18:48+08:00" content="2015-12-25">
               2015-12-25
             </time>
@@ -685,7 +864,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Sample/" itemprop="url" rel="index">
@@ -706,21 +889,24 @@
 
           
 
+          
+          
+
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h3 id="工程師最常說的一句話-by-Mark"><a href="#工程師最常說的一句話-by-Mark" class="headerlink" title="工程師最常說的一句話, by Mark"></a>工程師最常說的一句話, by Mark</h3><p><img src="https://chenkc.github.io/img/engineer-saying.jpg" alt="這就是工程師" title="工程師"></p>
+          
+            <h3 id="工程師最常說的一句話-by-Mark"><a href="#工程師最常說的一句話-by-Mark" class="headerlink" title="工程師最常說的一句話, by Mark"></a>工程師最常說的一句話, by Mark</h3><p><img src="https://chenkc.github.io/img/engineer-saying.jpg" alt="這就是工程師" title="工程師"></p>
 <p>測試二號<br><img src="https://chenkc.github.io/img/TOOZA.gif" alt=""></p>
 <!--
 測試三號
@@ -731,9 +917,16 @@ style 2:
 <img src="https://chenkc.github.io/img/logo-03.jpg" class="[my-test]" title="[50%] [50%] [the-title]">
 <p>–&gt;</p>
 -->
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -756,7 +949,11 @@ style 2:
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -767,266 +964,7 @@ style 2:
             
             
               
-                <a class="post-title-link" href="/test/sd-storage-partitions/" itemprop="url">
-                  SD Storage Partitions
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            發表於
-            <time itemprop="dateCreated" datetime="2015-12-23T10:21:33+08:00" content="2015-12-23">
-              2015-12-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/create-sd-image/" itemprop="url" rel="index">
-                    <span itemprop="name">create sd image</span>
-                  </a>
-                </span>
-
                 
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <!-- article brief , must add more than 130 characters -->
-<p>This article introduce the device storage partitions. There are three topics: device compatibility, partition description and create steps.</p>
-<h2 id="1-Compatibility"><a href="#1-Compatibility" class="headerlink" title="1. Compatibility"></a>1. Compatibility</h2><h3 id="1-1-Hardware-Device"><a href="#1-1-Hardware-Device" class="headerlink" title="1.1 Hardware Device"></a>1.1 Hardware Device</h3><ol>
-<li>ICM/ICS-2010</li>
-<li>ICM/ICS-2011</li>
-</ol>
-<h3 id="1-2-OS"><a href="#1-2-OS" class="headerlink" title="1.2 OS"></a>1.2 OS</h3><ol>
-<li>Yocto 1.6.2     (U-boot 2014.04, Kernel 3.10.53)  </li>
-<li>Ubuntu 12.04 (U-boot 2014.04, Kernel 3.10.53)</li>
-</ol>
-<!-- 
-2. Android 5.0.2 (U-boot 2014.04, Kernel 3.10.53) -->
-<!--
-To create storage partitions, you can use MFGTool as described in the Android Quick Start Guide, or you can use format tools in prebuild dir.
--->
-<h2 id="2-Partition-Description"><a href="#2-Partition-Description" class="headerlink" title="2. Partition Description"></a>2. Partition Description</h2><p>The layout of the MMC/SD/TF card for device is shown below:</p>
-<ul>
-<li>[Partition type/index] is which defined in the MBR.  </li>
-<li>[Name] is only meaningful in Android. You can ignore it when creating these partitions.  </li>
-<li>[Start Offset] shows where partition is started, unit in MB.</li>
-</ul>
-<!--
-The SYSTEM partition is used to put the built out EMBUX ICM/ICS device image. The DATA is used to put applications' unpacked codes/data, system configuration database, etc. In normal boot mode, the root file system is mounted from uramdisk. In recovery mode, the root file system is mounted from the RECOVERY partition.
--->
-<table>
-<thead>
-<tr>
-<th>Num</th>
-<th>Type</th>
-<th>Name</th>
-<th>start offset</th>
-<th>Size</th>
-<th>File System</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> 1</td>
-<td>N/A</td>
-<td>boot</td>
-<td>1 KB</td>
-<td>1 MB</td>
-<td>N/A</td>
-<td>u-boot.imx</td>
-</tr>
-<tr>
-<td> 2</td>
-<td>Primary 1</td>
-<td>rootfs</td>
-<td>16 MB</td>
-<td>7.2 G</td>
-<td>ext4</td>
-<td>root file system       </td>
-</tr>
-<tr>
-<td> 3</td>
-<td>Primary 2</td>
-<td>recovery</td>
-<td>after rootfs</td>
-<td>32 MB</td>
-<td>ext4</td>
-<td>Reserved       </td>
-</tr>
-<tr>
-<td> 4</td>
-<td>Extended</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td> 5</td>
-<td>Logical 5</td>
-<td>system</td>
-<td>after recovery</td>
-<td>1 MB</td>
-<td></td>
-<td>Reserved       </td>
-</tr>
-<tr>
-<td> 6</td>
-<td>Logical 6</td>
-<td>cache</td>
-<td>after system</td>
-<td>1 MB</td>
-<td></td>
-<td>Reserved       </td>
-</tr>
-<tr>
-<td> 6</td>
-<td>Logical 7</td>
-<td>device</td>
-<td>after cache</td>
-<td>1 MB</td>
-<td></td>
-<td>Reserved       </td>
-</tr>
-<tr>
-<td> 8</td>
-<td>Logical 8</td>
-<td>misc</td>
-<td>after device</td>
-<td>1 MB</td>
-<td></td>
-<td>Reserved       </td>
-</tr>
-<tr>
-<td> 9</td>
-<td>Logical 9</td>
-<td>storage</td>
-<td>after misc</td>
-<td>500 MB</td>
-<td>fat16</td>
-<td></td>
-</tr>
-<tr>
-<td>10</td>
-<td>Logical 10</td>
-<td>env</td>
-<td>after storage</td>
-<td>90 MB</td>
-<td>fat16</td>
-<td>boot-script, uImage and device-tree file       </td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-Steps"><a href="#3-Steps" class="headerlink" title="3. Steps"></a>3. Steps</h2><h3 id="3-1-Requirement"><a href="#3-1-Requirement" class="headerlink" title="3.1 Requirement"></a>3.1 Requirement</h3><p>An SD/MMC card reader, like a USB card reader, is required. It will be used to transfer the boot loader and kernel images to initialize the partition table and copy the root file system. To simplify the instructions, it is assumed that a 8GB SD/MMC card is used.</p>
-<p>To identify the device node assigned to the SD/MMC card, enter the command:</p>
-<pre><code>$ cat /proc/partitions
-major minor  #blocks  name
-   8     0   78124000 sda 
-   8     1   75095811 sda1  
-   8     2          1 sda2 
-   8     5    3028221 sda5 
-   8    32   43232323 sdb1 
-   8    18    3905535 sdc1
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In this example, <span class="keyword">the</span> device node assigned is /dev/sdc (<span class="keyword">a</span> block is <span class="number">512</span>B large).</span><br><span class="line"></span><br><span class="line"><span class="comment">### 3.2 Create Partition</span></span><br><span class="line"></span><br><span class="line">To <span class="built_in">create</span> <span class="keyword">a</span> partition, <span class="keyword">at</span> <span class="built_in">offset</span> <span class="number">16384</span> (<span class="keyword">in</span> sectors <span class="keyword">of</span> <span class="number">512</span> <span class="keyword">bytes</span>) enter <span class="keyword">the</span> following <span class="keyword">command</span>:</span><br></pre></td></tr></table></figure>
-
-$ sudo fdisk /dev/sdb
-
-u       [switch the unit to sectors instead of cylinders]
-d       [repeat this until no partition is reported by the &apos;p&apos; command ]
-n       [create a new partition]
-p       [create a primary partition]
-1       [the first partition]
-16384   [starting at offset sector #16384, i.e. 8MB, which leaves enough space for thekernel, the boot loader and its configuration data]
-&lt;enter&gt;     [using the default value will create a partition that spans to the last sector of the medium]
-w         [ this writes the partition table to the medium and fdisk exits]
-</code></pre><p>The file system format ext3 or ext4 is a good option for removable media due to the built- in journaling. Run the following command to format the partition:</p>
-<pre><code>$ sudo mkfs.ext3 /dev/sdb1
-</code></pre><p>Or</p>
-<pre><code>$ sudo mkfs.ext4 /dev/sdb1
-</code></pre><!--
-
-Partition type/index | Name     | Start offeset| Size   | File System       | Content
----------------------|------    |------       |------   |------             |------|   
-N/A                  | Boot Loader|   1 KB    |  1 MB   | N/A                         | bootloader (u-boot.imx)
-Primary 1            | Rootfs   | 7.3 GB      |  7.3 GB | rootfs (kernel + ramdisk)   | root file system
-Primary 2            | Recovery | Follow Boot |  32 MB  | boot.img (kernel + ramdisk) | recovery.img
-Logic 5 (extended 3) |          | Follow Boot |   1 KB  | reserved                    | 
-Logic 6 (extended 3) |          | Follow Boot |   1 MB  | reserved                    | 
-Logic 7 (extended 3) |          | Follow Boot |   1 MB  | reserved                    | 
-Logic 8 (extended 3) |          | Follow Boot |   1 MB  | reserved                    | 
-Logic 9 (extended 3) | storage  | Follow Boot |  500 MB | boot.img (kernel + ramdisk) | data storage
-Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ramdisk) | uImage + device tree tree
--->
-<p>More info: <a href="http://www.embux.com" target="_blank" rel="external">Reference</a></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 <a class="post-title-link" href="/test/table-test/" itemprop="url">
                   SD Storage Partitions
                 </a>
@@ -1037,7 +975,10 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
             <time itemprop="dateCreated" datetime="2015-12-23T10:21:33+08:00" content="2015-12-23">
               2015-12-23
             </time>
@@ -1045,7 +986,11 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/create-sd-image/" itemprop="url" rel="index">
@@ -1066,21 +1011,24 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
 
           
 
+          
+          
+
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <!-- article brief , must add more than 130 characters -->
+          
+            <!-- article brief , must add more than 130 characters -->
 <p>This article introduce the device storage partitions. There are three topics: device compatibility, partition description and create steps.</p>
 <h2 id="1-Compatibility"><a href="#1-Compatibility" class="headerlink" title="1. Compatibility"></a>1. Compatibility</h2><h3 id="1-1-Hardware-Device"><a href="#1-1-Hardware-Device" class="headerlink" title="1.1 Hardware Device"></a>1.1 Hardware Device</h3><ol>
 <li>ICM/ICS-2010</li>
@@ -1356,9 +1304,298 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
 -->
 <p>More info: <a href="http://www.embux.com" target="_blank" rel="external">Reference</a></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/test/sd-storage-partitions/" itemprop="url">
+                  SD Storage Partitions
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2015-12-23T10:21:33+08:00" content="2015-12-23">
+              2015-12-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/create-sd-image/" itemprop="url" rel="index">
+                    <span itemprop="name">create sd image</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- article brief , must add more than 130 characters -->
+<p>This article introduce the device storage partitions. There are three topics: device compatibility, partition description and create steps.</p>
+<h2 id="1-Compatibility"><a href="#1-Compatibility" class="headerlink" title="1. Compatibility"></a>1. Compatibility</h2><h3 id="1-1-Hardware-Device"><a href="#1-1-Hardware-Device" class="headerlink" title="1.1 Hardware Device"></a>1.1 Hardware Device</h3><ol>
+<li>ICM/ICS-2010</li>
+<li>ICM/ICS-2011</li>
+</ol>
+<h3 id="1-2-OS"><a href="#1-2-OS" class="headerlink" title="1.2 OS"></a>1.2 OS</h3><ol>
+<li>Yocto 1.6.2     (U-boot 2014.04, Kernel 3.10.53)  </li>
+<li>Ubuntu 12.04 (U-boot 2014.04, Kernel 3.10.53)</li>
+</ol>
+<!-- 
+2. Android 5.0.2 (U-boot 2014.04, Kernel 3.10.53) -->
+<!--
+To create storage partitions, you can use MFGTool as described in the Android Quick Start Guide, or you can use format tools in prebuild dir.
+-->
+<h2 id="2-Partition-Description"><a href="#2-Partition-Description" class="headerlink" title="2. Partition Description"></a>2. Partition Description</h2><p>The layout of the MMC/SD/TF card for device is shown below:</p>
+<ul>
+<li>[Partition type/index] is which defined in the MBR.  </li>
+<li>[Name] is only meaningful in Android. You can ignore it when creating these partitions.  </li>
+<li>[Start Offset] shows where partition is started, unit in MB.</li>
+</ul>
+<!--
+The SYSTEM partition is used to put the built out EMBUX ICM/ICS device image. The DATA is used to put applications' unpacked codes/data, system configuration database, etc. In normal boot mode, the root file system is mounted from uramdisk. In recovery mode, the root file system is mounted from the RECOVERY partition.
+-->
+<table>
+<thead>
+<tr>
+<th>Num</th>
+<th>Type</th>
+<th>Name</th>
+<th>start offset</th>
+<th>Size</th>
+<th>File System</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 1</td>
+<td>N/A</td>
+<td>boot</td>
+<td>1 KB</td>
+<td>1 MB</td>
+<td>N/A</td>
+<td>u-boot.imx</td>
+</tr>
+<tr>
+<td> 2</td>
+<td>Primary 1</td>
+<td>rootfs</td>
+<td>16 MB</td>
+<td>7.2 G</td>
+<td>ext4</td>
+<td>root file system       </td>
+</tr>
+<tr>
+<td> 3</td>
+<td>Primary 2</td>
+<td>recovery</td>
+<td>after rootfs</td>
+<td>32 MB</td>
+<td>ext4</td>
+<td>Reserved       </td>
+</tr>
+<tr>
+<td> 4</td>
+<td>Extended</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td> 5</td>
+<td>Logical 5</td>
+<td>system</td>
+<td>after recovery</td>
+<td>1 MB</td>
+<td></td>
+<td>Reserved       </td>
+</tr>
+<tr>
+<td> 6</td>
+<td>Logical 6</td>
+<td>cache</td>
+<td>after system</td>
+<td>1 MB</td>
+<td></td>
+<td>Reserved       </td>
+</tr>
+<tr>
+<td> 6</td>
+<td>Logical 7</td>
+<td>device</td>
+<td>after cache</td>
+<td>1 MB</td>
+<td></td>
+<td>Reserved       </td>
+</tr>
+<tr>
+<td> 8</td>
+<td>Logical 8</td>
+<td>misc</td>
+<td>after device</td>
+<td>1 MB</td>
+<td></td>
+<td>Reserved       </td>
+</tr>
+<tr>
+<td> 9</td>
+<td>Logical 9</td>
+<td>storage</td>
+<td>after misc</td>
+<td>500 MB</td>
+<td>fat16</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Logical 10</td>
+<td>env</td>
+<td>after storage</td>
+<td>90 MB</td>
+<td>fat16</td>
+<td>boot-script, uImage and device-tree file       </td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-Steps"><a href="#3-Steps" class="headerlink" title="3. Steps"></a>3. Steps</h2><h3 id="3-1-Requirement"><a href="#3-1-Requirement" class="headerlink" title="3.1 Requirement"></a>3.1 Requirement</h3><p>An SD/MMC card reader, like a USB card reader, is required. It will be used to transfer the boot loader and kernel images to initialize the partition table and copy the root file system. To simplify the instructions, it is assumed that a 8GB SD/MMC card is used.</p>
+<p>To identify the device node assigned to the SD/MMC card, enter the command:</p>
+<pre><code>$ cat /proc/partitions
+major minor  #blocks  name
+   8     0   78124000 sda 
+   8     1   75095811 sda1  
+   8     2          1 sda2 
+   8     5    3028221 sda5 
+   8    32   43232323 sdb1 
+   8    18    3905535 sdc1
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In this example, <span class="keyword">the</span> device node assigned is /dev/sdc (<span class="keyword">a</span> block is <span class="number">512</span>B large).</span><br><span class="line"></span><br><span class="line"><span class="comment">### 3.2 Create Partition</span></span><br><span class="line"></span><br><span class="line">To <span class="built_in">create</span> <span class="keyword">a</span> partition, <span class="keyword">at</span> <span class="built_in">offset</span> <span class="number">16384</span> (<span class="keyword">in</span> sectors <span class="keyword">of</span> <span class="number">512</span> <span class="keyword">bytes</span>) enter <span class="keyword">the</span> following <span class="keyword">command</span>:</span><br></pre></td></tr></table></figure>
+
+$ sudo fdisk /dev/sdb
+
+u       [switch the unit to sectors instead of cylinders]
+d       [repeat this until no partition is reported by the &apos;p&apos; command ]
+n       [create a new partition]
+p       [create a primary partition]
+1       [the first partition]
+16384   [starting at offset sector #16384, i.e. 8MB, which leaves enough space for thekernel, the boot loader and its configuration data]
+&lt;enter&gt;     [using the default value will create a partition that spans to the last sector of the medium]
+w         [ this writes the partition table to the medium and fdisk exits]
+</code></pre><p>The file system format ext3 or ext4 is a good option for removable media due to the built- in journaling. Run the following command to format the partition:</p>
+<pre><code>$ sudo mkfs.ext3 /dev/sdb1
+</code></pre><p>Or</p>
+<pre><code>$ sudo mkfs.ext4 /dev/sdb1
+</code></pre><!--
+
+Partition type/index | Name     | Start offeset| Size   | File System       | Content
+---------------------|------    |------       |------   |------             |------|   
+N/A                  | Boot Loader|   1 KB    |  1 MB   | N/A                         | bootloader (u-boot.imx)
+Primary 1            | Rootfs   | 7.3 GB      |  7.3 GB | rootfs (kernel + ramdisk)   | root file system
+Primary 2            | Recovery | Follow Boot |  32 MB  | boot.img (kernel + ramdisk) | recovery.img
+Logic 5 (extended 3) |          | Follow Boot |   1 KB  | reserved                    | 
+Logic 6 (extended 3) |          | Follow Boot |   1 MB  | reserved                    | 
+Logic 7 (extended 3) |          | Follow Boot |   1 MB  | reserved                    | 
+Logic 8 (extended 3) |          | Follow Boot |   1 MB  | reserved                    | 
+Logic 9 (extended 3) | storage  | Follow Boot |  500 MB | boot.img (kernel + ramdisk) | data storage
+Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ramdisk) | uImage + device tree tree
+-->
+<p>More info: <a href="http://www.embux.com" target="_blank" rel="external">Reference</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1380,15 +1617,16 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
 
   
 
- </div>
 
-        
+          </div>
+          
 
-        
-      </div>
 
-      
+          
+
+        </div>
         
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -1406,11 +1644,13 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="i.am.chenkc" itemprop="image"/>
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="i.am.chenkc" />
           <p class="site-author-name" itemprop="name">i.am.chenkc</p>
+          <p class="site-description motion-element" itemprop="description"></p>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -1419,26 +1659,30 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">分類</span>
+          
+            <div class="site-state-item site-state-categories">
               
-          </div>
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分類</span>
+              
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">標籤</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">標籤</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -1451,9 +1695,8 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
         
         
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+        
+        
 
       </section>
 
@@ -1463,99 +1706,250 @@ Logic 10 (extended 3) | env     | Follow Boot |   90 MB | boot.img (kernel + ram
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">i.am.chenkc</span>
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
   主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 
+        
 
- </div>
+        
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  
-  
-    
-    
-
   
 
-
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+
+
 
   
 
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
   <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-      motionIntegrator.bootstrap();
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
     });
   </script>
 
-  
+
   
 
   
+
   
 
   
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
-    });
-  </script>
+
+
 </body>
 </html>
