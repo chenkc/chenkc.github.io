@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>二十四孝遊戲式問答｜3×3 九宮格</title>
+  <meta name="description" content="適合 4–7 歲幼兒的二十四孝互動問答，3×3 九宮格按鈕，中央顯示故事名，八格對應 8 題簡短提問，含答案圖示與進度記錄開關。" />
+  <!-- 可選本地字型：請將字型檔放在 ./font 目錄，並改寫下方 @font-face 的 src 即可。若無字型檔，瀏覽器會自動使用系統字型。 -->
+  <style>
+    @font-face {
+      font-family: 'KidsLocal';
+      src: url('./font/KidsLocal.woff2') format('woff2');
+      font-display: swap;
+    }
+    :root{
+      --ff-base: 'KidsLocal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Noto Sans TC, "Helvetica Neue", Arial;
+      --c-bg: #FFFDF7;
+      --c-card: #FFFFFF;
+      --c-primary: #3E7BFA;
+      --c-secondary: #FFB84D;
+      --c-accent: #36C690;
+      --c-danger: #FF6B6B;
+      --c-muted: #6B7280;
+      --c-text: #1F2937;
+      --radius: 16px;
+      --shadow: 0 6px 20px rgba(0,0,0,.08);
+      --grid-gap: clamp(8px, 1.2vw, 14px);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--c-bg); color:var(--c-text); font-family:var(--ff-base);
+      line-height:1.5; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    .app{max-width:1100px; margin:0 auto; padding:clamp(12px,2vw,24px)}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom:clamp(12px,2vw,18px);
+    }
+    .brand{font-weight:800; letter-spacing:.5px}
+    .right-tools{display:flex; align-items:center; gap:10px}
+    .select{
+      display:flex; align-items:center; gap:8px; background:var(--c-card); padding:8px 10px;
+      border-radius:12px; box-shadow:var(--shadow);
+    }
+    select{
+      border:none; background:transparent; font:inherit; color:var(--c-text);
+      outline:none; padding:6px 2px; min-width:260px;
+    }
+    .toggle{display:inline-flex; align-items:center; gap:8px; user-select:none;}
+    .switch{position:relative; width:48px; height:28px; background:#e5e7eb; border-radius:999px; box-shadow:inset 0 0 0 2px rgba(0,0,0,.03); cursor:pointer}
+    .switch::after{content:""; position:absolute; top:3px; left:3px; width:22px; height:22px; background:#fff; border-radius:999px; box-shadow:0 2px 6px rgba(0,0,0,.2); transition:transform .2s ease}
+    .switch[aria-checked="true"]{background:var(--c-accent)}
+    .switch[aria-checked="true"]::after{transform:translateX(20px)}
+    .grid{
+      display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr);
+      gap:var(--grid-gap); min-height:68vh;
+    }
+    .cell{
+      background:var(--c-card); border-radius:var(--radius); box-shadow:var(--shadow);
+      display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+    }
+    .cell.center{
+      background:linear-gradient(135deg, rgba(62,123,250,.12), rgba(54,198,144,.12));
+      border:2px dashed rgba(62,123,250,.35);
+    }
+    .story-title{
+      font-weight:900; text-align:center; padding:10px; letter-spacing:.8px;
+      font-size:clamp(28px, 6vw, 72px); line-height:1.1;
+    }
+    .num-btn{
+      width:100%; height:100%; border:none; background:transparent; cursor:pointer; color:var(--c-primary);
+      font-weight:900; font-size:clamp(28px, 7vw, 64px); outline-offset:4px;
+    }
+    .num-btn:disabled{color:#d1d5db; cursor:not-allowed}
+    .num-btn.done{color:var(--c-muted)}
+    .num-mark{position:absolute; right:10px; bottom:8px; font-size:14px; color:var(--c-accent); font-weight:700}
+    .modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.4); display:none; align-items:center; justify-content:center; padding:16px}
+    .modal-backdrop[open]{display:flex}
+    .modal{
+      background:#fff; width:min(680px, 96vw); border-radius:18px; box-shadow:0 16px 40px rgba(0,0,0,.2);
+      padding:18px 18px 14px; position:relative;
+    }
+    .modal h2{margin:0 0 8px; font-size:clamp(20px, 3.5vw, 28px)}
+    .q{font-size:clamp(20px, 3.8vw, 30px); font-weight:800; margin:8px 0 12px}
+    .a{display:none; border-top:1px dashed #e5e7eb; margin-top:10px; padding-top:10px; font-size:clamp(16px, 2.8vw, 20px)}
+    .a[open]{display:block}
+    .hint{color:var(--c-muted); font-size:14px}
+    .icon-btn{appearance:none; border:none; background:var(--c-secondary); color:#000; border-radius:12px; padding:10px 12px; font-weight:800; cursor:pointer}
+    .icon-btn:hover{filter:brightness(1.02)}
+    .close-btn{position:absolute; top:10px; right:10px; background:transparent; border:none; font-size:24px; line-height:1; cursor:pointer}
+    :focus-visible{outline:3px solid #94bfff; outline-offset:2px}
+    @media (max-width:600px){
+      .right-tools{gap:6px}
+      select{min-width:200px}
+      .modal{padding:14px}
+    }
+    .loader{background:#fff5; padding:8px 12px; border-radius:10px; font-size:14px}
+    .uploader{display:none; gap:8px; align-items:center}
+    .uploader[open]{display:flex}
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <div class="topbar" role="banner">
+      <div class="brand">二十四孝｜九宮格問答</div>
+      <div class="right-tools">
+        <label class="toggle" title="是否記錄作答進度">
+          <span>記錄進度</span>
+          <span class="switch" role="switch" aria-checked="false" tabindex="0" id="progressSwitch" aria-label="切換記錄進度"></span>
+        </label>
+        <div class="select">
+          <span aria-hidden>📖</span>
+          <label for="storySelect" class="sr-only">選擇故事</label>
+          <select id="storySelect" aria-label="選擇二十四孝故事">
+            <option value="" selected disabled>請選故事…</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="loader" class="loader" aria-live="polite">載入題庫中…</div>
+    <div id="uploader" class="uploader" aria-live="polite">
+      <span>或手動載入題庫：</span>
+      <input type="file" id="fileInput" accept="application/json" />
+    </div>
+
+    <main class="grid" aria-live="polite">
+      <div class="cell"><button class="num-btn" data-num="1" disabled>1</button></div>
+      <div class="cell"><button class="num-btn" data-num="2" disabled>2</button></div>
+      <div class="cell"><button class="num-btn" data-num="3" disabled>3</button></div>
+      <div class="cell"><button class="num-btn" data-num="4" disabled>4</button></div>
+      <div class="cell center" id="centerCell"><div class="story-title" id="storyTitle">請先從右上角選故事</div></div>
+      <div class="cell"><button class="num-btn" data-num="5" disabled>5</button></div>
+      <div class="cell"><button class="num-btn" data-num="6" disabled>6</button></div>
+      <div class="cell"><button class="num-btn" data-num="7" disabled>7</button></div>
+      <div class="cell"><button class="num-btn" data-num="8" disabled>8</button></div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal" aria-hidden="true" aria-labelledby="qTitle" role="dialog">
+    <div class="modal">
+      <button class="close-btn" id="closeModal" aria-label="關閉">✕</button>
+      <h2 id="qTitle">題目</h2>
+      <div class="q" id="qText">……</div>
+      <div class="hint">請先讓小朋友回答，再點右下角的圖示看答案</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:10px;">
+        <div></div>
+        <button class="icon-btn" id="revealBtn" aria-expanded="false" aria-controls="answer">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-4px; margin-right:6px"><path d="M9 21h6M12 2a7 7 0 0 0-4 12c.6.5 1 1.2 1.2 2h5.6c.2-.8.6-1.5 1.2-2A7 7 0 0 0 12 2Z" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          顯示答案
+        </button>
+      </div>
+      <div class="a" id="answer" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== 應用狀態 =====
+    const STORAGE_KEY = 'filial-progress-v1';
+    const DATA_URL = './qa_24filial.json'; // 預期與本檔在同一資料夾
+    let STORIES = [];
+    let recordProgress = false;
+    let progress = {}; // { storyId: {1:true,...} }
+    let current = { storyId:null, qIndex:null };
+
+    // ===== DOM 快取 =====
+    const select = document.getElementById('storySelect');
+    const titleBox = document.getElementById('storyTitle');
+    const buttons = Array.from(document.querySelectorAll('.num-btn'));
+    const progressSwitch = document.getElementById('progressSwitch');
+    const modal = document.getElementById('modal');
+    const qTitle = document.getElementById('qTitle');
+    const qText = document.getElementById('qText');
+    const ans = document.getElementById('answer');
+    const revealBtn = document.getElementById('revealBtn');
+    const closeBtn = document.getElementById('closeModal');
+    const loader = document.getElementById('loader');
+    const uploader = document.getElementById('uploader');
+    const fileInput = document.getElementById('fileInput');
+
+    // ===== 資料載入（含 file:// 後援） =====
+    async function loadData() {
+      try {
+        loader.textContent = '載入題庫中…';
+        const res = await fetch(DATA_URL, {cache:'no-store'});
+        if (!res.ok) throw new Error('HTTP '+res.status);
+        STORIES = await res.json();
+        loader.textContent = '題庫載入完成。';
+        setTimeout(()=> loader.remove(), 500);
+        initSelect();
+        return;
+      } catch (err) {
+        // 可能是 file:// 限制或找不到檔案，開啟上傳備援
+        loader.textContent = '無法自動載入題庫，請手動選擇 qa_24filial.json 檔。';
+        uploader.setAttribute('open','');
+      }
+    }
+    fileInput?.addEventListener('change', async (e)=>{
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        STORIES = JSON.parse(text);
+        loader.textContent = '題庫載入完成。';
+        uploader.remove();
+        setTimeout(()=> loader.remove(), 500);
+        initSelect();
+      } catch {
+        loader.textContent = '檔案格式錯誤，請重新選擇 qa_24filial.json。';
+      }
+    });
+
+    // ===== 初始化選單 =====
+    function initSelect(){
+      // 清空舊選項（若重載）
+      [...select.options].slice(1).forEach(o=>o.remove());
+      STORIES.forEach(s=>{
+        const opt = document.createElement('option');
+        opt.value = s.id;
+        const idText = String(s.id).padStart(2, '0');
+        opt.textContent = `${idText}｜${s.title}`;
+        select.appendChild(opt);
+      });
+      setButtonsEnabled(false);
+      titleBox.textContent = '請先從右上角選故事';
+      renderProgressMarks();
+    }
+
+    function setButtonsEnabled(enabled){
+      buttons.forEach(btn=>{
+        btn.disabled = !enabled;
+        if(!enabled){
+          btn.classList.remove('done');
+          let mark = btn.parentElement.querySelector('.num-mark');
+          if(mark) mark.remove();
+        }
+      });
+    }
+
+    function renderProgressMarks(){
+      if(!recordProgress || !current.storyId) return;
+      const p = progress[current.storyId] || {};
+      buttons.forEach(btn=>{
+        const idx = Number(btn.dataset.num);
+        btn.classList.toggle('done', !!p[idx]);
+        let mark = btn.parentElement.querySelector('.num-mark');
+        if(p[idx]){
+          if(!mark){
+            mark = document.createElement('div');
+            mark.className = 'num-mark';
+            mark.textContent = '✓';
+            btn.parentElement.appendChild(mark);
+          }
+        }else{
+          if(mark) mark.remove();
+        }
+      });
+    }
+
+    function loadProgress(){
+      try{ progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+      catch{ progress = {}; }
+    }
+    function saveProgress(){
+      if(!recordProgress) return;
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch{}
+    }
+
+    // 選擇故事事件
+    select.addEventListener('change', ()=>{
+      const id = Number(select.value);
+      const story = STORIES.find(s=>s.id===id);
+      current.storyId = id;
+      titleBox.textContent = story?.title || '';
+      setButtonsEnabled(true);
+      renderProgressMarks();
+    });
+
+    // 題目彈窗
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        if(!current.storyId) return;
+        const s = STORIES.find(x=>x.id===current.storyId);
+        const idx = Number(btn.dataset.num) - 1;
+        const qa = s?.qa?.[idx];
+        if(!qa) return;
+        current.qIndex = idx + 1;
+        qTitle.textContent = `第 ${current.qIndex} 題`;
+        qText.textContent = qa.q;
+        ans.textContent = qa.a;
+        ans.removeAttribute('open');
+        revealBtn.setAttribute('aria-expanded','false');
+        openModal();
+      });
+    });
+
+    function openModal(){
+      modal.setAttribute('open','');
+      modal.removeAttribute('aria-hidden');
+      revealBtn.focus();
+      document.addEventListener('keydown', onEsc);
+    }
+    function closeModal(){
+      modal.removeAttribute('open');
+      modal.setAttribute('aria-hidden','true');
+      document.removeEventListener('keydown', onEsc);
+      if(recordProgress && current.storyId && current.qIndex){
+        progress[current.storyId] = progress[current.storyId] || {};
+        progress[current.storyId][current.qIndex] = true;
+        saveProgress();
+        renderProgressMarks();
+      }
+    }
+    function onEsc(e){ if(e.key==='Escape') closeModal(); }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+
+    // 顯示/收合答案
+    revealBtn.addEventListener('click', ()=>{
+      const open = ans.hasAttribute('open');
+      if(open){
+        ans.removeAttribute('open');
+        revealBtn.setAttribute('aria-expanded','false');
+        revealBtn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-4px; margin-right:6px"><path d="M9 21h6M12 2a7 7 0 0 0-4 12c.6.5 1 1.2 1.2 2h5.6c.2-.8.6-1.5 1.2-2A7 7 0 0 0 12 2Z" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>顯示答案`;
+      }else{
+        ans.setAttribute('open','');
+        revealBtn.setAttribute('aria-expanded','true');
+        revealBtn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-4px; margin-right:6px"><path d="M20 7a8 8 0 1 0-16 0c0 3 2 4 3 6h10c1-2 3-3 3-6Zm-8 13a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3Z" fill="#111"/></svg>收合答案`;
+      }
+    });
+
+    // 進度開關
+    function setSwitch(val){
+      recordProgress = !!val;
+      progressSwitch.setAttribute('aria-checked', String(recordProgress));
+    }
+    function toggleSwitch(){ setSwitch(!recordProgress); }
+    progressSwitch.addEventListener('click', toggleSwitch);
+    progressSwitch.addEventListener('keydown', (e)=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggleSwitch(); }});
+
+    // 初始化
+    (function init(){
+      loadProgress();
+      setSwitch(false);
+      setButtonsEnabled(false);
+      loadData();
+    })();
+  </script>
+</body>
+</html>
